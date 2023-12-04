@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-string[] games = Input.InputStr.Split(
+﻿string[] games = Input.InputStr.Split(
   new string[] { Environment.NewLine },
   StringSplitOptions.None
 );
@@ -35,7 +33,6 @@ for (int i = 0; i < games.Length; i++)
   string[] sets = setsStr.Split(";");
 
   int power = Utils.getPower(sets);
-  Console.WriteLine(power);
   
   total += power;
 }
