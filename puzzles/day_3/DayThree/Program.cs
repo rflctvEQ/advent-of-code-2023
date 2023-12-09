@@ -1,6 +1,4 @@
-﻿using System.Xml.XPath;
-
-string[] lines = Input.InputStr.Split(
+﻿string[] lines = Input.InputStr.Split(
   new string[] { Environment.NewLine },
   StringSplitOptions.None
 );
@@ -19,7 +17,6 @@ for (int i = 0; i < lines.Length; i++)
       foreach (var pair in numObj)
       {
         // check whether number touches special character (and identify whether line of numbers is first, last, or middle)
-        // Console.WriteLine($"{pair.Key}: {pair.Value}");
         int? number = -1;
         if (i != 0 && i != (lines.Length - 1))
         {
@@ -55,5 +52,10 @@ Console.WriteLine($"Part 1 total: {total}");
 total = 0;
 
 for (int i = 0; i < lines.Length; i++){
-  // 
+  List<int> indexes = Utils.GetAsteriskIndexes(lines[i]);
+
+  foreach (int idx in indexes)
+  {
+    
+  }
 }

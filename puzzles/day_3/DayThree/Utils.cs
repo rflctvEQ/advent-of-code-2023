@@ -40,6 +40,7 @@ class Utils {
     return numbers;
   }
 
+// return true if char special
   private static bool CheckCurrentRow (KeyValuePair<int, string> numObj, string current)
   {
     bool specialFound = false;
@@ -50,7 +51,6 @@ class Utils {
       // if neighbor char before is special
       if (current[numObj.Key - 1] != '.' && !char.IsDigit(current[numObj.Key - 1]))
       {
-        // Console.WriteLine("special in neighbor before idx");
         specialFound = true;
       }
     }
@@ -61,7 +61,6 @@ class Utils {
       // if neighbor char after is special
       if (current[numObj.Key + numObj.Value.Length] != '.' && !char.IsDigit(current[numObj.Key + numObj.Value.Length]))
       {
-        // Console.WriteLine("special in neighbor after idx");
         specialFound = true;
       }
     }
@@ -130,5 +129,40 @@ class Utils {
     } else {
       return 0;
     }
+  }
+
+
+  public static List<int> GetAsteriskIndexes (string input)
+  {
+    List<int> asterisks = new List<int>();
+
+    int index = 0;
+    while (index < input.Length)
+    {
+      while (index < input.Length && input[index] != '*')
+      {
+        index ++;
+      }
+
+      if (index < input.Length)
+      {
+        if (input[index] == '*') {
+          asterisks.Add(index);
+        }
+
+        index++;
+      }
+    }
+
+    return asterisks;
+  }
+
+  public static bool CheckForGears (int idx, string current, string? prev, string? next)
+  {
+    bool currentRowTouchesInt = false;
+    bool prevRowTouchesInt = false;
+    bool nextRowTouchesInt = false;
+
+    
   }
 }
