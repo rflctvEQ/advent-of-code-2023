@@ -34,12 +34,7 @@ for (int i = 0; i < lines.Length; i++)
         // if number, add to total
         if (number != 0)
         {
-          Console.WriteLine($"Number {pair.Value} is special!");
           total += number;
-        }
-        else
-        {
-          Console.WriteLine($"Number {pair.Value} is NOT special! :(");
         }
       }
     }
@@ -56,6 +51,25 @@ for (int i = 0; i < lines.Length; i++){
 
   foreach (int idx in indexes)
   {
-    
+    int? number = -1;
+    if (i != 0 && i != (lines.Length -1))
+    {
+      number = Utils.CheckForGears(idx, lines[i], lines[i - 1], lines[i + 1]);
+    }
+    else if (i == 0)
+    {
+      number = Utils.CheckForGears(idx, lines[i], null, lines[i + 1]);
+    }
+    else if (i == (lines.Length - 1))
+    {
+      number = Utils.CheckForGears(idx, lines[i], lines[i - 1], null);
+    }
+
+    if (number != 0)
+    {
+      total += number;
+    }
   }
 }
+
+Console.WriteLine($"Part 2 total: {total}");

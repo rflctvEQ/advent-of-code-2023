@@ -157,12 +157,64 @@ class Utils {
     return asterisks;
   }
 
-  public static bool CheckForGears (int idx, string current, string? prev, string? next)
+  public static int CheckForGears (int idx, string current, string? prev, string? next)
   {
-    bool currentRowTouchesInt = false;
-    bool prevRowTouchesInt = false;
-    bool nextRowTouchesInt = false;
+    List<int> touchingNumbers = new List<int>();
 
-    
+    // check current row to see if there's a number on either side
+    List<object> currentRowNumbers = GetNumbers(current);
+
+    foreach (Dictionary<int, string> num in currentRowNumbers)
+    {
+      foreach(var kvp in num)
+      {
+      if (kvp.Key + (kvp.Value.Length - 1) == idx - 1 || kvp.Key == idx + 1)
+      {
+        touchingNumbers.Add(int.Parse(kvp.Value));
+      }
+      }
+    }
+
+    if (prev != null)
+    {
+      List<object> prevRowNumbers = GetNumbers(prev);
+
+      foreach (Dictionary<int, string> num in prevRowNumbers)
+      {
+        foreach (var kvp in num)
+        {
+          if (kvp.Key + (kvp.Value.Length - 1) >= idx - 1 && kvp.Key <= idx + 1)
+          {
+            touchingNumbers.Add(int.Parse(kvp.Value));
+          }
+        }
+      }
+    }
+
+    if (next != null)
+    {
+      List<object> nextRowNumbers = GetNumbers(next);
+
+      foreach (Dictionary<int, string> num in nextRowNumbers)
+      {
+        foreach (var kvp in num)
+        {
+          if (kvp.Key + (kvp.Value.Length - 1) >= idx - 1 && kvp.Key <= idx + 1)
+          {
+            touchingNumbers.Add(int.Parse(kvp.Value));
+          }
+        }
+      }
+    }
+
+
+    if (touchingNumbers.Count == 2)
+    {
+     return touchingNumbers[0] * touchingNumbers[1];
+    }
+    else
+    {
+     return 0;
+    }
   }
 }
