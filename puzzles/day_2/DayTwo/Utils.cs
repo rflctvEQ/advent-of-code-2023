@@ -6,7 +6,7 @@ class Utils {
     {"blue", 14}
   };
 
-  private static int getQuantity (string input)
+  private static int GetQuantity (string input)
   {
     return int.Parse(
       input.SkipWhile(c => !char.IsDigit(c))
@@ -15,7 +15,7 @@ class Utils {
     );
   }
 
-  public static bool checkSets(string[] sets)
+  public static bool CheckSets(string[] sets)
   {
     // default true; set to false only if some quantity exceeds constraints
     bool passesConstraints = true;
@@ -27,7 +27,7 @@ class Utils {
     // foreach result, check if it contains key in dictionary and compare to see if number is greater than value in dictionary
     foreach (string result in results)
     {
-      int quantity = getQuantity(result);
+      int quantity = GetQuantity(result);
 
       // fail game if result quantity exceeds constraint in dictionary
       foreach (var kvp in gameConstraints)
@@ -45,7 +45,7 @@ class Utils {
    return passesConstraints;
   }
 
-  public static int getPower(string[] sets)
+  public static int GetPower(string[] sets)
   {
     List<int> redValues = [];
     List<int> greenValues = [];
@@ -57,7 +57,7 @@ class Utils {
 
       foreach (string result in results)
       {
-        int quantity = getQuantity(result);
+        int quantity = GetQuantity(result);
 
         if (result.Contains("red"))
         {

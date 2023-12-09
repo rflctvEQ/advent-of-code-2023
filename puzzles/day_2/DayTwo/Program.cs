@@ -14,7 +14,7 @@ for (int i = 0; i < games.Length; i++)
   string[] sets = setsStr.Split(";");
 
   // check if all sets pass
-  bool setsPassConstraints = Utils.checkSets(sets);
+  bool setsPassConstraints = Utils.CheckSets(sets);
 
   // if all sets pass, add id to total
   if (setsPassConstraints) {
@@ -32,7 +32,7 @@ for (int i = 0; i < games.Length; i++)
   string setsStr = games[i].Split(":")[1];
   string[] sets = setsStr.Split(";");
 
-  int power = Utils.getPower(sets);
+  int power = Utils.GetPower(sets);
   
   total += power;
 }
